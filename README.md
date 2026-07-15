@@ -1,7 +1,6 @@
 # Restoran Burger FJ — Aplikasi Pemesanan Menu Restoran
 
 Aplikasi web pemesanan menu restoran berbasis **Laravel**, aplikasi ini memiliki Home page publik yang menampilkan profil restoran & menu unggulan, serta memungkinkan **pelanggan** untuk mendaftar, memesan menu, mengunggah bukti pembayaran, dan melihat pengumuman — sementara **admin** dapat memverifikasi pendaftaran akun, pesanan, pembayaran, serta mengelola menu dan pengumuman.
-
 ---
 
 ## Fitur Utama
@@ -140,3 +139,5 @@ Aplikasi dapat diakses di `http://127.0.0.1:8000`.
 |---|---|---|
 | Admin | admin@restoran.com | admin12345 |
 | Pelanggan | *(daftar mandiri lewat halaman /register)* | - |
+=======
+>
