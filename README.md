@@ -73,7 +73,7 @@ Aplikasi ini menggunakan 6 tabel utama:
 
 ### 1. Clone repository
 ```bash
-git clone https://github.com/Femmy29/lsp_femmy.git
+git clone https://github.com/Femmy29/LSP.git
 cd lsp_femmy
 ```
 
