@@ -1,6 +1,6 @@
 # 🍽️ Restoran Burger FJ — Aplikasi Pemesanan Menu Restoran
 
-Aplikasi web pemesanan menu restoran berbasis **Laravel**, aplikasi ini memiliki Home page publik yang menampilkan profil restoran & menu unggulan, serta memungkinkan **pelanggan** untuk mendaftar, memesan menu, mengunggah bukti pembayaran, dan melihat pengumuman — sementara **admin** dapat memverifikasi pendaftaran akun, pesanan, pembayaran, serta mengelola menu dan pengumuman.
+Aplikasi web pemesanan menu restoran berbasis **Laravel**, aplikasi ini memiliki Home page publik yang menampilkan profil restoran & menu unggulan, serta memungkinkan **pelanggan** untuk mendaftar, memesan menu, mengunggah bukti pembayaran, dan melihat pengumuman, sementara **admin** dapat memverifikasi pendaftaran akun, pesanan, pembayaran, serta mengelola menu dan pengumuman.
 
 ---
 
@@ -70,61 +70,3 @@ Aplikasi ini menggunakan 6 tabel utama:
 
 ---
 
-## Instalasi
-
-### 1. Clone repository
-```bash
-git clone https://github.com/Femmy29/lsp_femmy.git
-cd lsp_femmy
-```
-
-### 2. Install dependency PHP
-```bash
-composer install
-```
-
-### 3. Salin file environment
-```bash
-cp .env.example .env
-```
-
-### 4. Konfigurasi database
-Buka file `.env`, sesuaikan bagian berikut dengan konfigurasi MySQL:
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=menu_restoran
-DB_USERNAME=root
-DB_PASSWORD=
-```
-Pastikan sudah membuat database kosong dengan nama `menu_restoran` 
-
-### 5. Generate application key
-```bash
-php artisan key:generate
-```
-
-### 6. Jalankan migration
-```bash
-php artisan migrate
-```
-
-### 7. Buat akun admin (seeder)
-```bash
-php artisan db:seed --class=AdminSeeder
-```
-
-### 8. Buat symbolic link untuk storage (upload gambar)
-```bash
-php artisan storage:link
-```
-
-### 9. Siapkan gambar untuk landing page
-Taruh gambar berikut di folder `public/images/`:
-- `hero-bg.jpg` — foto latar untuk hero section Home page
-
-### 10. Jalankan aplikasi
-```bash
-php artisan serve
-```
