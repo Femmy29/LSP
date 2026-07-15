@@ -20,7 +20,9 @@
                 <p class="card-text small text-muted">{{ Str::limit($item->isi, 100) }}</p>
 
                 @if ($item->video)
-                <a href="{{ $item->video }}" target="_blank" class="small mb-2">▶ Lihat Video</a>
+                <div class="ratio ratio-16x9 mb-2">
+                    <iframe src="{{ $item->video }}" title="{{ $item->judul }}" allowfullscreen></iframe>
+                </div>
                 @endif
 
                 <div class="mt-auto d-flex gap-2">

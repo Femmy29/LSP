@@ -40,6 +40,7 @@ class MenuController extends Controller
         ]);
 
         $validated['tersedia'] = $request->boolean('tersedia');
+        $validated['unggulan'] = $request->boolean('unggulan');
 
         if ($request->hasFile('gambar')) {
             $validated['gambar'] = $request->file('gambar')->store('menu', 'public');
@@ -73,7 +74,6 @@ class MenuController extends Controller
         ]);
 
         $validated['tersedia'] = $request->boolean('tersedia');
-        $validated['unggulan'] = $request->boolean('unggulan');
 
         if ($request->hasFile('gambar')) {
             if ($menu->gambar) {

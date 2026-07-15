@@ -5,11 +5,34 @@
 @section('content')
 <div class="hero-elegant text-center text-white rounded-4 p-5 mb-5">
     <p class="text-uppercase small mb-2" style="letter-spacing: 3px; color: var(--resto-gold-light);">Selamat Datang di</p>
-    <h1 class="display-4 mb-2" style="color: var(--resto-gold-light);">Restoran App</h1>
+    <h1 class="display-4 mb-2" style="color: var(--resto-gold-light);">Restoran Burger FJ</h1>
     <p class="lead mb-4">Nikmati Pengalaman Bersantap yang Istimewa</p>
     <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="{{ route('login') }}" class="btn btn-lg" style="background: var(--resto-gold-light); color: var(--resto-dark);">Lihat Menu</a>
-        <a href="{{ route('register') }}" class="btn btn-lg btn-outline-light">Daftar Sekarang</a>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            @guest
+            <a href="{{ route('login') }}" class="btn btn-lg"
+                style="background: var(--resto-gold-light); color: var(--resto-dark);">
+                Lihat Menu
+            </a>
+            @else
+            @if(auth()->user()->role == 'admin')
+            <a href="{{ route('admin.menu.index') }}" class="btn btn-lg"
+                style="background: var(--resto-gold-light); color: var(--resto-dark);">
+                Lihat Menu
+            </a>
+            @elseif(auth()->user()->status == 'accepted')
+            <a href="{{ route('pelanggan.menu.index') }}" class="btn btn-lg"
+                style="background: var(--resto-gold-light); color: var(--resto-dark);">
+                Lihat Menu
+            </a>
+            @else
+            <a href="{{ route('pelanggan.status-akun') }}" class="btn btn-lg"
+                style="background: var(--resto-gold-light); color: var(--resto-dark);">
+                Lihat Menu
+            </a>
+            @endif
+            @endguest
+        </div>
     </div>
 </div>
 

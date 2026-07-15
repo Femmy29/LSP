@@ -25,13 +25,7 @@
             color: #2b2320;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .navbar-brand {
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
             font-family: 'Playfair Display', serif;
         }
 
@@ -72,8 +66,7 @@
             border-color: var(--resto-brown);
         }
 
-        .btn-primary:hover,
-        .btn-primary:focus {
+        .btn-primary:hover, .btn-primary:focus {
             background-color: var(--resto-dark);
             border-color: var(--resto-gold);
         }
@@ -88,7 +81,7 @@
             border-color: var(--resto-brown);
         }
 
-        /* Kartu dashboard bertema elegant (dipakai lewat class custom) */
+        /* Kartu dashboard bertema elegant */
         .card-elegant-1 {
             background: linear-gradient(135deg, var(--resto-dark), var(--resto-brown));
             color: #f7f2ea;
@@ -114,10 +107,7 @@
             color: #f7f2ea;
         }
 
-        .card-elegant-1 .btn,
-        .card-elegant-2 .btn,
-        .card-elegant-4 .btn,
-        .card-elegant-5 .btn {
+        .card-elegant-1 .btn, .card-elegant-2 .btn, .card-elegant-4 .btn, .card-elegant-5 .btn {
             background-color: var(--resto-gold-light);
             color: var(--resto-dark);
             border: none;
@@ -129,11 +119,7 @@
             border: none;
         }
 
-        footer {
-            border-top: 1px solid rgba(201, 162, 39, 0.3);
-            color: #7a6f63 !important;
-        }
-
+        /* Hero section (landing page) */
         .hero-elegant {
             background-image: linear-gradient(rgba(26, 20, 16, 0.75), rgba(62, 39, 35, 0.85)),
             url("{{ asset('images/hero-bg.jpg') }}");
@@ -145,7 +131,11 @@
             flex-direction: column;
             justify-content: center;
         }
-        
+
+        footer {
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+            color: #7a6f63 !important;
+        }
     </style>
 </head>
 
@@ -153,7 +143,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-elegant">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">Restoran Burger FJ</a>
+            <a class="navbar-brand" href="{{ route('home') }}">Restoran Burger FJ</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -163,14 +153,12 @@
                 @auth
                 <ul class="navbar-nav me-auto ms-3">
                     @if (auth()->user()->role === 'admin')
-                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.menu.index') }}">Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.akun.index') }}">Verifikasi Akun</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.pesanan.index') }}">Verifikasi Pesanan</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.pembayaran.index') }}">Verifikasi Pembayaran</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.pengumuman.index') }}">Pengumuman</a></li>
                     @elseif (auth()->user()->status === 'accepted')
-                    <li class="nav-item"><a class="nav-link" href="{{ route('pelanggan.dashboard') }}">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('pelanggan.menu.index') }}">Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('pelanggan.pesanan.index') }}">Pesanan Saya</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('pelanggan.pengumuman.index') }}">Pengumuman</a></li>

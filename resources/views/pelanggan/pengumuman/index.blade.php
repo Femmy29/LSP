@@ -16,7 +16,9 @@
                 <h5 class="card-title">{{ $item->judul }}</h5>
                 <p class="card-text small">{{ $item->isi }}</p>
                 @if ($item->video)
-                <a href="{{ $item->video }}" target="_blank">▶ Lihat Video</a>
+                <div class="ratio ratio-16x9 mb-2">
+                    <iframe src="{{ $item->video }}" title="{{ $item->judul }}" allowfullscreen></iframe>
+                </div>
                 @endif
             </div>
         </div>
