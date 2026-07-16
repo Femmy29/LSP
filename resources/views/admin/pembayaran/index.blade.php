@@ -24,7 +24,9 @@
                     <th>Metode</th>
                     <th>Bukti Transfer</th>
                     <th>Status</th>
+                    @if (in_array($status, ['pending', 'semua']))
                     <th>Aksi</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -42,21 +44,32 @@
                         <span class="badge bg-{{ $item->status === 'diterima' ? 'success' : ($item->status === 'ditolak' ? 'danger' : 'warning') }}">
                             {{ ucfirst($item->status) }}
                         </span>
-                    </td>
+
+                    @if(in_array($status, ['pending', 'semua']))
                     <td>
                         @if ($item->status === 'pending')
                         <form action="{{ route('admin.pembayaran.terima', $item) }}" method="POST" class="d-inline">
-                            @csrf @method('PATCH')
-                            <button class="btn btn-sm btn-success" onclick="return confirm('Terima pembayaran ini?')">Terima</button>
+                            @csrf
+                            @method('PATCH')
+                            <button class="btn btn-sm btn-success"
+                                onclick="return confirm('Terima pembayaran ini?')">
+                                Terima
+                            </button>
                         </form>
+
                         <form action="{{ route('admin.pembayaran.tolak', $item) }}" method="POST" class="d-inline">
-                            @csrf @method('PATCH')
-                            <button class="btn btn-sm btn-danger" onclick="return confirm('Tolak pembayaran ini?')">Tolak</button>
+                            @csrf
+                            @method('PATCH')
+                            <button class="btn btn-sm btn-danger"
+                                onclick="return confirm('Tolak pembayaran ini?')">
+                                Tolak
+                            </button>
                         </form>
                         @else
                         <span class="text-muted small">-</span>
                         @endif
                     </td>
+                    @endif
                 </tr>
                 @empty
                 <tr>

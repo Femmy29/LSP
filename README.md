@@ -107,6 +107,7 @@ php artisan key:generate
 ### 6. Jalankan migration
 ```bash
 php artisan migrate
+php artisan migrate:fresh --seed
 ```
 
 ### 7. Buat akun admin (seeder)

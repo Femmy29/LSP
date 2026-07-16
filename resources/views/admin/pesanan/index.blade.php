@@ -24,7 +24,9 @@
                     <th>Item Pesanan</th>
                     <th>Total</th>
                     <th>Status</th>
+                    @if (in_array($status, ['pending', 'semua']))
                     <th>Aksi</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -45,7 +47,8 @@
                             {{ ucfirst($item->status) }}
                         </span>
                     </td>
-                    <td>
+                    <@if (in_array($status, ['pending', 'semua' ]))
+                        <td>
                         @if ($item->status === 'pending')
                         <form action="{{ route('admin.pesanan.terima', $item) }}" method="POST" class="d-inline">
                             @csrf @method('PATCH')
@@ -78,7 +81,8 @@
                         @else
                         <span class="text-muted small">-</span>
                         @endif
-                    </td>
+                        </td>
+                        @endif
                 </tr>
                 @empty
                 <tr>
