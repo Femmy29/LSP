@@ -6,6 +6,9 @@ use App\Http\Controllers\Auth\AuthController;
 
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Pelanggan\DashboardController as PelangganDashboardController;
+
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\PesananController as AdminPesananController;
 use App\Http\Controllers\Admin\PembayaranController as AdminPembayaranController;
@@ -39,10 +42,7 @@ Route::middleware('auth')->group(function () {
 
     //status pellanggan sdh accept
     Route::middleware(['role:customer', 'status.akun'])->prefix('pelanggan')->name('pelanggan.')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('pelanggan.dashboard');
-        })->name('dashboard');
-
+        Route::get('/dashboard', [PelangganDashboardController::class, 'index'])->name('dashboard');
         Route::get('/menu', [PelangganMenuController::class, 'index'])->name('menu.index');
 
         Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
@@ -56,9 +56,7 @@ Route::middleware('auth')->group(function () {
 
     //fitur admin
     Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
         //verifikasi akun
         Route::get('/akun', [AkunController::class, 'index'])->name('akun.index');

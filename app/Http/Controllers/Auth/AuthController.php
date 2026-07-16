@@ -81,7 +81,7 @@ class AuthController extends Controller
 
         //admin ke dashboard
         if ($user->role === 'admin') {
-            return redirect()->route('admin.menu.index');
+            return redirect()->route('admin.dashboard');
         }
 
         //pelnggan cek status
@@ -89,7 +89,7 @@ class AuthController extends Controller
             return redirect()->route('pelanggan.status-akun');
         }
 
-        return redirect()->route('pelanggan.menu.index');
+        return redirect()->route('pelanggan.dashboard');
     }
 
     // Logout
