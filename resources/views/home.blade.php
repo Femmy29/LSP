@@ -36,6 +36,18 @@
     </div>
 </div>
 
+@php
+if (auth()->guest()) {
+        $linkMenu = route('login');
+    } elseif (auth()->user()->role === 'admin') {
+        $linkMenu = route('admin.menu.index');
+    } elseif (auth()->user()->status === 'accepted') {
+        $linkMenu = route('pelanggan.menu.index');
+    } else {
+    $linkMenu = route('pelanggan.status-akun');
+}
+@endphp
+
 <div class="text-center mb-4">
     <p class="text-uppercase small mb-1" style="letter-spacing: 2px; color: var(--resto-gold);">Menu Pilihan</p>
     <h2>Hidangan Spesial Kami</h2>
@@ -52,7 +64,7 @@
                 <h5 class="card-title" style="color: var(--resto-gold-light);">{{ $item->nama_menu }}</h5>
                 <p class="small text-white-50">{{ Str::limit($item->deskripsi, 60) }}</p>
                 <p class="fw-bold fs-5 mb-3" style="color: var(--resto-gold-light);">Rp {{ number_format($item->harga, 0, ',', '.') }}</p>
-                <a href="{{ route('login') }}" class="btn btn-sm" style="background: var(--resto-gold-light); color: var(--resto-dark);">Pesan Sekarang</a>
+                <a href="{{ $linkMenu }}" class="btn btn-sm" style="background: var(--resto-gold-light); color: var(--resto-dark);">Pesan Sekarang</a>
             </div>
         </div>
     </div>
